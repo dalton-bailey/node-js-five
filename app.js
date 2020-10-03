@@ -1,8 +1,14 @@
 const express = require("express");
 const app = express();
 
-const fruitRoute = require("./routes/fruits");
+const fruitRoute = require("./fruits");
 
-app.use("/fruits", fruitRoute);
+app.use("/fruit", fruitRoute);
+
+app.use((req, res) => {
+    res.status(200).json({
+        message: 'it works'
+    })
+})
 
 module.exports = app;
