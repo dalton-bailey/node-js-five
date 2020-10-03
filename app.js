@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const fruitRoute = require("./fruits");
+const fruitRoute = require("./routes/fruits");
 
 app.use("/fruit", fruitRoute);
 
