@@ -1,44 +1,14 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+const fruitRoute = require("./routes/fruits");
 
-const fruits = [
-    { id: "1", name: "Banana" },
-    { id: "2", name: "Apple" },
-    { id: "3", name: "Orange" },
-    { id: "4", name: "Pineapple" },
-  ];
-  
-  app.get("/", (req, res) => {
-    res.send(fruits);
-  });
-  
-  app.post("/", (req, res) => {
-    const fruit = {
-      id: req.body.id,
-      name: req.body.name,
-    };
-  
-    fruits.push(fruit);
-  
-    res.send(fruits);
-  });
-  
-  app.put("/", (req, res) => {
-    const index = fruits.findIndex((item) => item.id == req.body.id);
-    fruits[index].name = req.body.name;
-    res.send(fruits);
-  });
-  
-  app.delete("/", (req, res) => {
-    const index = fruits.findIndex((item) => item.id == req.body.id);
-    fruits[index].name = req.body.name;
-  
-    const deleteFruit = fruits.splice(index, 1);
-    res.send(deleteFruit);
-  });
+app.use("/fruits", fruitRoute);
 
-  module.exports = app
+// app.use((req, res) => {
+//     res.status(200).json({
+//         message: 'it works'
+//     })
+// })
+
+module.exports = app;
