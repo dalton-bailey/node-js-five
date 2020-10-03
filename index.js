@@ -1,6 +1,10 @@
 var http = require('http')
+const port = 3000
+const server = http.createServer()
 
-http.createServer(function(req, res) {
-    res.writeHead(200, {"Content-type": "text/plain"})
-    res.end("Hello World\n")
-}).listen(process.env.PORT)
+server.listen(port)
+
+// http.createServer(function(req, res) {
+//     res.writeHead(200, {"Content-type": "text/plain"})
+//     res.end("Hello World")
+// }).listen(process.env.PORT)
